@@ -7,14 +7,16 @@ if(url)
   var e,t=e.document.createElement("iframe");
   t.style.border="none";
   t.style.width="100%";
-  t.style.height="100%";t.style.margin="0";
+  t.style.height="100%";
+  t.style.margin="0";
   t.src=url;
   e.document.body.appendChild(t);
   var o=setInterval(function(){e.closed&&(clearInterval(o),e=void 0)},500)
-  t.onload = function() {
+  window.onload = function() {
     var s = e.document.createElement('script');
     s.type = 'text/javascript';
-    var code = 'window.addEventListener("unload", (event) => {event.preventDefault()});window.addEventListener("beforeunload", (event) => {event.preventDefault()});';
+    window.onbeforeunload = function(e) {e.preventDefault()};
+    window.onunload = function(e) {e.preventDefault()};
     try {
       s.appendChild(e.document.createTextNode(code));
       e.document.body.appendChild(s);
