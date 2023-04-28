@@ -14,7 +14,7 @@ if(url)
   t.onload = function() {
     var s = e.document.createElement('script');
     s.type = 'text/javascript';
-    var code = 'addEventListener("unload", (event) => {event.preventDefault()});addEventListener("beforeunload", (event) => {event.preventDefault()});';
+    var code = 'window.addEventListener("unload", (event) => {event.preventDefault()});window.addEventListener("beforeunload", (event) => {event.preventDefault()});';
     try {
       s.appendChild(e.document.createTextNode(code));
       e.document.body.appendChild(s);
