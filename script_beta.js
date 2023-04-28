@@ -12,15 +12,15 @@ if(url)
   e.document.body.appendChild(t);
   var o=setInterval(function(){e.closed&&(clearInterval(o),e=void 0)},500)
   t.onload = function() {
-    var s = t.document.createElement('script');
+    var s = e.document.createElement('script');
     s.type = 'text/javascript';
     var code = 'addEventListener("unload", (event) => {event.preventDefault()});addEventListener("beforeunload", (event) => {event.preventDefault()});';
     try {
-      s.appendChild(t.document.createTextNode(code));
-      t.document.body.appendChild(s);
-    } catch (e) {
+      s.appendChild(e.document.createTextNode(code));
+      e.document.body.appendChild(s);
+    } catch (err) {
       s.text = code;
-      t.document.body.appendChild(s);
+      e.document.body.appendChild(s);
     }
   }
 }
